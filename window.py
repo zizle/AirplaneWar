@@ -1,9 +1,8 @@
 # _*_ coding:utf-8 _*_
 import pygame
+from config import WIDTH, HEIGHT
+from hero import Hero, hero_plane
 
-
-WIDTH = 512
-HEIGHT = 768
 
 # initialize pygame
 pygame.init()
@@ -21,8 +20,11 @@ class GameWindow(object):
         bg_image = pygame.image.load("res/img_bg_level_2.jpg")
         # setup image location
         self.window.blit(bg_image, (0, 0))
-        # refresh the window
-        pygame.display.update()
+
+    def draw(self):
+        """绘制对象"""
+        # 显示英雄飞机
+        self.window.blit(hero_plane.hero_img, (hero_plane.hero_rect[0], hero_plane.hero_rect[1]))
 
     def event_handler(self):
         """window event handling"""
@@ -49,3 +51,9 @@ class GameWindow(object):
             print('Left')
         elif press_keys[pygame.K_RIGHT]:
             print('Right')
+
+    @staticmethod
+    def update():
+        """刷新窗口"""
+        # refresh the window
+        pygame.display.update()
