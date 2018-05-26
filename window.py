@@ -17,12 +17,12 @@ class GameWindow(object):
         # set icon
         pygame.display.set_icon(logo)
         # loading the background image
-        bg_image = pygame.image.load("res/img_bg_level_2.jpg")
-        # setup image location
-        self.window.blit(bg_image, (0, 0))
+        self.bg_image = pygame.image.load("res/img_bg_level_2.jpg")
 
     def draw(self):
         """绘制对象"""
+        # setup image location
+        self.window.blit(self.bg_image, (0, 0))
         # 显示英雄飞机
         self.window.blit(hero_plane.hero_img, (hero_plane.hero_rect[0], hero_plane.hero_rect[1]))
 
@@ -45,12 +45,16 @@ class GameWindow(object):
         press_keys = pygame.key.get_pressed()
         if press_keys[pygame.K_UP]:
             print('Up')
+            hero_plane.move_up()
         elif press_keys[pygame.K_DOWN]:
             print('Down')
+            hero_plane.move_down()
         elif press_keys[pygame.K_LEFT]:
             print('Left')
+            hero_plane.move_left()
         elif press_keys[pygame.K_RIGHT]:
             print('Right')
+            hero_plane.move_right()
 
     @staticmethod
     def update():

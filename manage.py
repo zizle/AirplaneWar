@@ -3,9 +3,9 @@ from window import GameWindow
 
 
 if __name__ == '__main__':
+    window = GameWindow()
     while True:
         # create a window
-        window = GameWindow()
         # handing the event in window
         window.event_handler()
         # 显示对象
